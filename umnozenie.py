@@ -4,13 +4,17 @@ count = 0
 a = []
 i= 1
 x = True
+y = False
 def gl():
     global x
-    x = False
+    if y == False:
+        x = False
 t = threading.Timer(180.0,gl)
 t.start()
 def p():
-    print('у вас осталась 1 минута (^.^)/ ')
+    global y
+    if y == False:
+        print('у вас осталась 1 минута (^.^)/ ')
 tp = threading.Timer(120.0,p)
 tp.start()
 while i <=40:
@@ -43,9 +47,13 @@ while i <=40:
             break
 if count >= 38:
     print('количество правильных ответов: ',count,'оценка: 5')
+    y = True
 if count >= 35 and count < 38:
     print('количество правильных ответов: ',count,'оценка: 4')
+    y = True
 if count >= 30 and count < 35:
     print('количество правильных ответов: ',count,'оценка: 3')
+    y = True
 if count < 30:
     print('количество правильных ответов: ',count,'оценка: 2')
+    y = True
